@@ -53,10 +53,10 @@ public class DataSaveRepositoryDb implements ISaveDataRepository {
                 ps.setInt(parameterIndex++, p.PersonType);
                 ps.setInt(parameterIndex++, p.IsTerrorist);
                 ps.setString(parameterIndex++, p.Inn);
-                ps.setObject(parameterIndex++, GetSqlDate(p.BirthDate));
+                ps.setString(parameterIndex++, p.BirthDate);
                 ps.setString(parameterIndex++, p.Description);
                 ps.setString(parameterIndex++, p.Address);
-                ps.setString(parameterIndex++, p.TerroristReslution);
+                ps.setString(parameterIndex++, p.TerroristResolution);
                 ps.setString(parameterIndex++, p.BirthPlace);
                 ps.setString(parameterIndex, p.Passport);
 

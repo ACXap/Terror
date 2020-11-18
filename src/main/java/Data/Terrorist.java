@@ -16,10 +16,10 @@ public class Terrorist {
         PersonType = terrorist.PersonType;
         IsTerrorist = terrorist.IsTerrorist;
         Inn = terrorist.Inn.replace("\n", "");;
-        BirthDate = GetDataToString(terrorist.BirthDate.replace("\n", ""));
+        BirthDate = terrorist.BirthDate.replace("\n", "");
         Description = terrorist.Description.replace("\n", "");;
         Address = terrorist.Address;
-        TerroristReslution = terrorist.TerroristReslution.replace("\n", "");;
+        TerroristResolution = terrorist.TerroristReslution.replace("\n", "");;
         BirthPlace = terrorist.BirthPlace.replace("\n", "");;
         Passport = terrorist.Passport.replace("\n", "");;
     }
@@ -38,13 +38,13 @@ public class Terrorist {
 
     public String Inn;
 
-    public Date BirthDate;
+    public String BirthDate;
 
     public String Description;
 
     public String Address;
 
-    public String TerroristReslution;
+    public String TerroristResolution;
 
     public String BirthPlace;
 
