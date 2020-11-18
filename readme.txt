@@ -1,0 +1,1 @@
+﻿Пример: java -jar Terror-1.0.jar
