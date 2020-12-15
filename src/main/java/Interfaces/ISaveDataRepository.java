@@ -8,4 +8,6 @@ import java.util.List;
 public interface ISaveDataRepository {
 
     void AddTerror(List<Terrorist> persons) throws SQLException;
+
+    void DeleteData() throws SQLException;
 }

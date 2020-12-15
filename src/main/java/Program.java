@@ -17,6 +17,7 @@ public class Program {
         List<Terrorist> terror = Terrorist.ConvertEntityToTerrarist(terrorResponse.Terror);
 
         DataSaveRepositoryDb db = new DataSaveRepositoryDb(PropertyService.DbConnectProperty);
+        db.DeleteData();
         db.AddTerror(terror);
     }
 }
