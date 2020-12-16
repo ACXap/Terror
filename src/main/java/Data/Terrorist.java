@@ -11,20 +11,20 @@ public class Terrorist {
 
 
     public Terrorist(TerrorEntity terrorist) {
-        Name = terrorist.Name.replace("\n", "");;
+        Name = RemoveBadChar(terrorist.Name);
         IdNew = terrorist.IdNew;
         PersonType = terrorist.PersonType;
         IsTerrorist = terrorist.IsTerrorist;
-        Inn = terrorist.Inn.replace("\n", "");;
-        BirthDate = terrorist.BirthDate.replace("\n", "");
-        Description = terrorist.Description.replace("\n", "");;
-        Address = terrorist.Address;
-        TerroristResolution = terrorist.TerroristReslution.replace("\n", "");;
-        BirthPlace = terrorist.BirthPlace.replace("\n", "");;
-        Passport = terrorist.Passport.replace("\n", "");;
+        Inn = RemoveBadChar(terrorist.Inn);
+        BirthDate = RemoveBadChar(terrorist.BirthDate);
+        Description = RemoveBadChar(terrorist.Description);
+        Address = RemoveBadChar(terrorist.Address);
+        TerroristResolution = RemoveBadChar(terrorist.TerroristReslution);
+        BirthPlace = RemoveBadChar(terrorist.BirthPlace);
+        Passport = RemoveBadChar(terrorist.Passport);
     }
 
-    public static List<Terrorist> ConvertEntityToTerrarist(List<TerrorEntity> collection){
+    public static List<Terrorist> ConvertEntityToTerrorist(List<TerrorEntity> collection) {
         return collection.stream().map(Terrorist::new).collect(Collectors.toList());
     }
 
@@ -50,16 +50,10 @@ public class Terrorist {
 
     public String Passport;
 
+    private String RemoveBadChar(String data) {
+        if (data == null || data.isEmpty()) return null;
 
-    public Date GetDataToString(String date){
-        if(date==null || date.isEmpty()) return  null;
-
-        try {
-            return new SimpleDateFormat("dd.MM.yyyy").parse(date);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return  null;
-        }
+        String temp = data.replace("\n", "");
+        return temp.isEmpty() ? null : temp;
     }
-
 }

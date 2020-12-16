@@ -14,7 +14,7 @@ public class Program {
         TerrorResponse terrorResponse = rf.GetResponse("temp/" + "terror.xml");
 
 
-        List<Terrorist> terror = Terrorist.ConvertEntityToTerrarist(terrorResponse.Terror);
+        List<Terrorist> terror = Terrorist.ConvertEntityToTerrorist(terrorResponse.Terror);
 
         DataSaveRepositoryDb db = new DataSaveRepositoryDb(PropertyService.DbConnectProperty);
         db.DeleteData();
