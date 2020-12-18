@@ -4,15 +4,8 @@ import Interfaces.IRepositoryTerror;
 import Service.PropertyService;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class FactoryRepository {
     public IRepositoryTerror GetRepository(String[] arg) throws Exception {
@@ -22,7 +15,12 @@ public class FactoryRepository {
         }
 
         if (arg.length == 2 && arg[0].equals("-f")) {
-            return new RepositoryFile(arg[1]);
+            String fileName = arg[1];
+            if (new File(fileName).exists()) {
+                return new RepositoryFile(fileName);
+            } else {
+                throw new Exception("Not found file " + fileName);
+            }
         }
 
         if (arg.length == 1 && arg[0].equals("-f")) {
@@ -30,18 +28,11 @@ public class FactoryRepository {
             File[] files = new File(PropertyService.PathTempFile).listFiles();
             Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
 
-            if (files.length>0)
+            if (files.length > 0)
                 return new RepositoryFile(files[0].getAbsolutePath());
-
-//            try (Stream<Path> paths = Files.walk(Paths.get(PropertyService.PathTempFile))) {
-//                List<String> files = paths.filter(Files::isRegularFile).map(Path::toString).collect(Collectors.toList());
-
-              //  if (!files.isEmpty())
-              //      return new RepositoryFile(files.get(0));
-
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+            else {
+                throw new Exception("Not found file in folder " + PropertyService.PathTempFile);
+            }
         }
 
         throw new Exception("Wrong args");

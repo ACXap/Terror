@@ -12,7 +12,7 @@ import java.util.Properties;
 public class PropertyService {
 
     //region PrivateField
-    private static final String _fileIni = "settings.ini";
+    private static final String FILE_INI = "settings.ini";
 
     //endregion PrivateField
 
@@ -22,7 +22,7 @@ public class PropertyService {
     public static String UrlService;
     public static String DbSeparator;
     public static DbConnectProperty DbConnectProperty;
-    //public static InternetConnectProperty InternetConnectProperty;
+    public static InternetConnectProperty InternetConnectProperty;
     public static String PathTempFile;
 
     //endregion PublicProperty
@@ -31,7 +31,7 @@ public class PropertyService {
     public static void Initialization() throws Exception {
         Properties props = new Properties();
 
-        try (FileInputStream fs = new FileInputStream(_fileIni);
+        try (FileInputStream fs = new FileInputStream(FILE_INI);
              InputStreamReader sr = new InputStreamReader(fs, StandardCharsets.UTF_8)) {
             props.load(sr);
         }
@@ -47,13 +47,11 @@ public class PropertyService {
                 props.getProperty("DbPassword"),
                 props.getProperty("DbSchema"));
         PathTempFile = props.getProperty("PathTempFile");
+        InternetConnectProperty = new InternetConnectProperty(props.getProperty("ProxyServer"), ParseInt(props.getProperty("ProxyPort"), 8080));
 
-        if(PathTempFile!=null && !PathTempFile.isEmpty()){
-            new File(PathTempFile).mkdirs();
-        }
-
-        //InternetConnectProperty = new InternetConnectProperty(props.getProperty("ProxyServer"), ParseInt(props.getProperty("ProxyPort"), 8080));
+        CreateTempFolder();
     }
+
     //endregion PublicMethod
 
     //region PrivateMethod
@@ -63,6 +61,12 @@ public class PropertyService {
         } catch (Exception ex) {
             ex.printStackTrace();
             return defValue;
+        }
+    }
+
+    private static void CreateTempFolder() {
+        if(PathTempFile!=null && !PathTempFile.isEmpty()){
+            new File(PathTempFile).mkdirs();
         }
     }
     //endregion PrivateMethod
