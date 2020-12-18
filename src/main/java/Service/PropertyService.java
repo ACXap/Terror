@@ -39,8 +39,7 @@ public class PropertyService {
         //ApiKey = props.getProperty("ApiKey");
         //UrlService = props.getProperty("UrlService");
         DbSeparator = props.getProperty("DbSeparator");
-        DbConnectProperty = new DbConnectProperty(props.getProperty("DbType"),
-                props.getProperty("DbServer"),
+        DbConnectProperty = new DbConnectProperty(props.getProperty("DbServer"),
                 ParseInt(props.getProperty("DbPort"), 5432),
                 props.getProperty("DbName"),
                 props.getProperty("DbUser"),
