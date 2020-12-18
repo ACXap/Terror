@@ -23,7 +23,6 @@ public class PropertyService {
     public static String DbSeparator;
     public static DbConnectProperty DbConnectProperty;
     //public static InternetConnectProperty InternetConnectProperty;
-    public static boolean CanSaveTempFile;
     public static String PathTempFile;
 
     //endregion PublicProperty
@@ -32,7 +31,7 @@ public class PropertyService {
     public static void Initialization() throws Exception {
         Properties props = new Properties();
 
-        try (FileInputStream fs = new FileInputStream(new File(_fileIni));
+        try (FileInputStream fs = new FileInputStream(_fileIni);
              InputStreamReader sr = new InputStreamReader(fs, StandardCharsets.UTF_8)) {
             props.load(sr);
         }
@@ -47,8 +46,11 @@ public class PropertyService {
                 props.getProperty("DbUser"),
                 props.getProperty("DbPassword"),
                 props.getProperty("DbSchema"));
-        CanSaveTempFile = Boolean.parseBoolean(props.getProperty("SaveTempFile"));
         PathTempFile = props.getProperty("PathTempFile");
+
+        if(PathTempFile!=null && !PathTempFile.isEmpty()){
+            new File(PathTempFile).mkdirs();
+        }
 
         //InternetConnectProperty = new InternetConnectProperty(props.getProperty("ProxyServer"), ParseInt(props.getProperty("ProxyPort"), 8080));
     }
