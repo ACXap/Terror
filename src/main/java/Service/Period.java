@@ -16,14 +16,14 @@ public class Period {
         return FormatDate(_startDate);
     }
 
-    public String GetStopDate(){
+    public String GetStopDate() {
         _stopDate = LocalDateTime.now();
-        return  FormatDate(_stopDate);
+        return FormatDate(_stopDate);
     }
 
-    public String GetPeriod(){
+    public String GetPeriod() {
         Duration dur = Duration.between(_startDate, _stopDate);
-        return  GetTimeString(dur);
+        return GetTimeString(dur);
     }
     //endregion PublicMethod
 

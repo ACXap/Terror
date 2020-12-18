@@ -64,7 +64,7 @@ public class PropertyService {
     }
 
     private static void CreateTempFolder() {
-        if(PathTempFile!=null && !PathTempFile.isEmpty()){
+        if (PathTempFile != null && !PathTempFile.isEmpty()) {
             new File(PathTempFile).mkdirs();
         }
     }

@@ -7,7 +7,6 @@ import Interfaces.ISaveDataRepository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 public class DataSaveRepositoryDb implements ISaveDataRepository {
@@ -18,8 +17,8 @@ public class DataSaveRepositoryDb implements ISaveDataRepository {
     }
 
     //region PrivateField
-    protected final QueryGenerator _queryGenerator;
-    protected final DbConnectProperty _dbConnectProperty;
+    private final QueryGenerator _queryGenerator;
+    private final DbConnectProperty _dbConnectProperty;
     //endregion PrivateField
 
     @Override
@@ -87,13 +86,5 @@ public class DataSaveRepositoryDb implements ISaveDataRepository {
             }
             ps.executeBatch();
         }
-    }
-
-    private Object GetSqlDate(Date date) {
-        if (date != null) {
-            return new java.sql.Date(date.getTime());
-        }
-
-        return null;
     }
 }
