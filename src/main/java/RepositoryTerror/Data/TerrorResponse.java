@@ -3,6 +3,7 @@ package RepositoryTerror.Data;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+import java.util.Date;
 import java.util.List;
 
 public class TerrorResponse {
@@ -14,7 +15,7 @@ public class TerrorResponse {
     public String Date;
 
     @JacksonXmlProperty(isAttribute = true, localName = "ID")
-    public String Id;
+    public long Id;
 
     @JacksonXmlProperty(localName = "TERRORISTS")
     @JacksonXmlElementWrapper(useWrapping = false)

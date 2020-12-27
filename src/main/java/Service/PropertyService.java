@@ -46,7 +46,7 @@ public class PropertyService {
                 props.getProperty("DbPassword"),
                 props.getProperty("DbSchema"));
         PathTempFile = props.getProperty("PathTempFile");
-        InternetConnectProperty = new InternetConnectProperty(props.getProperty("ProxyServer"), ParseInt(props.getProperty("ProxyPort"), 8080));
+       // InternetConnectProperty = new InternetConnectProperty(props.getProperty("ProxyServer"), ParseInt(props.getProperty("ProxyPort"), 8080));
 
         CreateTempFolder();
     }

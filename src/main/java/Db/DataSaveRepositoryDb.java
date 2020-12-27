@@ -80,7 +80,11 @@ public class DataSaveRepositoryDb implements ISaveDataRepository {
                 ps.setString(parameterIndex++, p.Address);
                 ps.setString(parameterIndex++, p.TerroristResolution);
                 ps.setString(parameterIndex++, p.BirthPlace);
-                ps.setString(parameterIndex, p.Passport);
+                ps.setString(parameterIndex++, p.Passport);
+
+                ps.setDate(parameterIndex++, new java.sql.Date(p.DateList.getTime()));
+                ps.setString(parameterIndex++, p.NumList);
+                ps.setLong(parameterIndex++, p.IdList);
 
                 ps.addBatch();
             }

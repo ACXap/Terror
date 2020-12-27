@@ -2,14 +2,16 @@ package Data;
 
 import RepositoryTerror.Data.TerrorEntity;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Terrorist {
 
+    public static String SEPARATOR;
 
     public Terrorist(TerrorEntity terrorist) {
-        Name = RemoveBadChar(terrorist.Name);
+        Name = GetName(RemoveBadChar(terrorist.Name));
         IdNew = terrorist.IdNew;
         PersonType = terrorist.PersonType;
         IsTerrorist = terrorist.IsTerrorist;
@@ -48,10 +50,25 @@ public class Terrorist {
 
     public String Passport;
 
+    public Date DateList;
+    public long IdList;
+    public String NumList;
+
+    private String GetName(String name){
+        return name.replace("(", SEPARATOR).
+                replace(";", SEPARATOR).
+                replace(")", SEPARATOR);
+    }
+
     private String RemoveBadChar(String data) {
         if (data == null || data.isEmpty()) return null;
 
-        String temp = data.replace("\n", "");
+        String temp = data.
+                replace("\n", "").
+                replace("*", "").
+                replace("&amp;", "&").
+                replace("&apos;", "`");
+
         return temp.isEmpty() ? null : temp;
     }
 }

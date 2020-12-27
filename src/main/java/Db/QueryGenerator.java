@@ -14,8 +14,8 @@ public class QueryGenerator {
 
     public String GetQueryInsertTerror() {
         return INSERT_INTO + TABLE_PERSON
-                + " (name,id_new,person_type_id,is_terrorist,inn,birth_date,description,address,terrorist_resolution,birth_place,passport)"
-                + " VALUES(?,?,?,?,?,?,?,?,?,?,?);";
+                + " (name,id_new,person_type_id,is_terrorist,inn,birth_date,description,address,terrorist_resolution,birth_place,passport,date_list,num_list,id_list)"
+                + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
     }
 
     public String GetQueryDeleteData() {
