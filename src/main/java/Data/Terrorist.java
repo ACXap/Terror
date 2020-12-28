@@ -29,32 +29,21 @@ public class Terrorist {
     }
 
     public String Name;
-
     public int IdNew;
-
     public int PersonType;
-
     public int IsTerrorist;
-
     public String Inn;
-
     public String BirthDate;
-
     public String Description;
-
     public String Address;
-
     public String TerroristResolution;
-
     public String BirthPlace;
-
     public String Passport;
-
     public Date DateList;
     public long IdList;
     public String NumList;
 
-    private String GetName(String name){
+    private String GetName(String name) {
         return name.replace("(", SEPARATOR).
                 replace(";", SEPARATOR).
                 replace(")", SEPARATOR);
@@ -63,11 +52,13 @@ public class Terrorist {
     private String RemoveBadChar(String data) {
         if (data == null || data.isEmpty()) return null;
 
-        String temp = data.
+        String temp = data.replace("&quot;", "\"").
+                replaceAll(" +", " ").
                 replace("\n", "").
+                replace("* ", "").
                 replace("*", "").
                 replace("&amp;", "&").
-                replace("&apos;", "`");
+                replace("&apos;", "'");
 
         return temp.isEmpty() ? null : temp;
     }
