@@ -28,9 +28,9 @@ public class FactoryRepository {
             File[] files = new File(PropertyService.PathTempFile).listFiles();
             Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
 
-            if (files.length > 0)
+            if (files.length > 0) {
                 return new RepositoryFile(files[0].getAbsolutePath());
-            else {
+            } else {
                 throw new Exception("Not found file in folder " + PropertyService.PathTempFile);
             }
         }

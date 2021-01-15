@@ -49,6 +49,10 @@ public class Terrorist {
                 replace(")", SEPARATOR);
     }
 
+    private String GetAddress(String address){
+        return address.replace(";", SEPARATOR);
+    }
+
     private String RemoveBadChar(String data) {
         if (data == null || data.isEmpty()) return null;
 
